@@ -31,8 +31,16 @@ print_status "Starting dotfiles update..."
 # Update nvim configuration
 if [ -d ~/.config/nvim ]; then
     print_status "Updating Neovim configuration..."
-    rsync -av --exclude='lazy-lock.json' --exclude='plugin/' --exclude='lazy/' ~/.config/nvim/ "$DOTFILES_DIR/nvim/"
-    print_success "Neovim configuration updated"
+    
+    # Check if nvim is symlinked to our dotfiles
+    if [ -L ~/.config/nvim ] && [ "$(readlink ~/.config/nvim)" = "$DOTFILES_DIR/nvim" ]; then
+        print_status "Neovim is already symlinked to dotfiles - no need to sync"
+        print_status "Changes made directly in ~/Code/dotfiles/nvim/ will be reflected immediately"
+    else
+        # Copy changes from ~/.config/nvim to dotfiles
+        rsync -av --exclude='lazy-lock.json' --exclude='plugin/' --exclude='lazy/' ~/.config/nvim/ "$DOTFILES_DIR/nvim/"
+        print_success "Neovim configuration updated"
+    fi
 else
     print_warning "Neovim configuration not found at ~/.config/nvim"
 fi

@@ -40,10 +40,10 @@ A curated collection of my development environment configuration files, featurin
 ### Quick Install
 ```bash
 # Clone the repository
-git clone https://github.com/pratyaypandey/dotfiles.git ~/.dotfiles
+git clone https://github.com/pratyaypandey/dotfiles.git ~/Code/dotfiles
 
 # Run the install script
-cd ~/.dotfiles
+cd ~/Code/dotfiles
 ./install.sh
 ```
 
@@ -53,7 +53,7 @@ cd ~/.dotfiles
 mkdir -p ~/.config/nvim
 
 # Copy nvim configuration
-cp -r ~/.dotfiles/nvim/* ~/.config/nvim/
+cp -r ~/Code/dotfiles/nvim/* ~/.config/nvim/
 
 # Install plugins (first time you open nvim)
 nvim --headless -c "Lazy! sync" -c "qa"
@@ -108,6 +108,20 @@ Customize LaTeX snippets in `nvim/UltiSnips/tex.snippets`. The file includes:
 - Document templates
 - Beamer presentation templates
 - SymPy integration for math
+
+### Workflow for Updates
+After installation, the install script creates a symlink from `~/.config/nvim` to `~/Code/dotfiles/nvim`. This means:
+
+1. **Direct editing**: You can edit files directly in `~/Code/dotfiles/nvim/` and changes are immediately reflected
+2. **Version control**: All changes are tracked in your git repository
+3. **Easy updates**: Use `./update.sh` to sync any changes made outside the dotfiles directory
+4. **Commit and push**: After making changes, commit and push to GitHub:
+   ```bash
+   cd ~/Code/dotfiles
+   git add .
+   git commit -m "Update nvim configuration"
+   git push
+   ```
 
 ## 📁 Structure
 

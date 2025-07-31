@@ -104,6 +104,14 @@ main() {
     cp -r "$DOTFILES_DIR/nvim" ~/.config/
     print_success "Neovim configuration installed"
     
+    # Create a symlink for easy updates (optional)
+    if [ ! -L ~/.config/nvim ]; then
+        print_status "Creating symlink for easy updates..."
+        rm -rf ~/.config/nvim
+        ln -sf "$DOTFILES_DIR/nvim" ~/.config/nvim
+        print_success "Symlink created: ~/.config/nvim -> $DOTFILES_DIR/nvim"
+    fi
+    
     # Install plugins
     print_status "Installing Neovim plugins..."
     if nvim --headless -c "Lazy! sync" -c "qa" 2>/dev/null; then
