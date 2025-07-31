@@ -116,23 +116,38 @@ Customize LaTeX snippets in `nvim/UltiSnips/tex.snippets`. The file includes:
 - SymPy integration for math
 
 ### Workflow for Updates
-After installation, the install script creates symlinks from `~/.config/` to `~/Code/dotfiles/` for all configurations:
+The install script copies configurations to `~/.config/` for portability. To keep your dotfiles in sync:
 
-- `~/.config/nvim` → `~/Code/dotfiles/nvim`
-- `~/.config/doom` → `~/Code/dotfiles/doom`
-- `~/.config/emacs` → `~/Code/dotfiles/emacs`
+#### Option 1: Edit in Dotfiles (Recommended)
+```bash
+# Edit directly in dotfiles
+cd ~/Code/dotfiles
+nvim nvim/init.lua
+nvim doom/config.el
+nvim emacs/early-init.el
 
-This means:
+# Then sync to .config
+./update.sh
+```
 
-1. **Direct editing**: You can edit files directly in `~/Code/dotfiles/` and changes are immediately reflected
-2. **Version control**: All changes are tracked in your git repository
-3. **Commit and push**: After making changes, commit and push to GitHub:
-   ```bash
-   cd ~/Code/dotfiles
-   git add .
-   git commit -m "Update configuration"
-   git push
-   ```
+#### Option 2: Edit in .config and Sync Back
+```bash
+# Edit in .config
+nvim ~/.config/nvim/init.lua
+nvim ~/.config/doom/config.el
+
+# Sync changes back to dotfiles
+cd ~/Code/dotfiles
+./update.sh
+```
+
+#### Option 3: Commit and Push
+```bash
+cd ~/Code/dotfiles
+git add .
+git commit -m "Update configuration"
+git push
+```
 
 ## 📁 Structure
 
@@ -157,6 +172,7 @@ dotfiles/
 │   ├── .doomrc              # Doom configuration
 │   └── lisp/                # Custom Lisp functions
 ├── install.sh               # Installation script
+├── update.sh                # Sync changes back to dotfiles
 └── README.md               # This file
 ```
 

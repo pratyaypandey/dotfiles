@@ -104,29 +104,24 @@ main() {
     cp -r "$DOTFILES_DIR/nvim" ~/.config/
     print_success "Neovim configuration installed"
     
-    # Create a symlink for easy updates (optional)
-    if [ ! -L ~/.config/nvim ]; then
-        print_status "Creating symlink for easy updates..."
-        rm -rf ~/.config/nvim
-        ln -sf "$DOTFILES_DIR/nvim" ~/.config/nvim
-        print_success "Symlink created: ~/.config/nvim -> $DOTFILES_DIR/nvim"
-    fi
+    # Copy nvim configuration (no symlinks for portability)
+    print_status "Copying Neovim configuration..."
+    cp -r "$DOTFILES_DIR/nvim" ~/.config/
+    print_success "Neovim configuration installed"
     
-    # Install Emacs/Doom configuration with symlinks
+    # Install Emacs/Doom configuration (copy method)
     if [ -d "$DOTFILES_DIR/doom" ]; then
         print_status "Installing Doom Emacs configuration..."
         backup_config ~/.config/doom ~/.config/doom.backup.$(date +%Y%m%d_%H%M%S)
-        rm -rf ~/.config/doom
-        ln -sf "$DOTFILES_DIR/doom" ~/.config/doom
-        print_success "Doom Emacs symlink created: ~/.config/doom -> $DOTFILES_DIR/doom"
+        cp -r "$DOTFILES_DIR/doom" ~/.config/
+        print_success "Doom Emacs configuration installed"
     fi
     
     if [ -d "$DOTFILES_DIR/emacs" ]; then
         print_status "Installing Emacs configuration..."
         backup_config ~/.config/emacs ~/.config/emacs.backup.$(date +%Y%m%d_%H%M%S)
-        rm -rf ~/.config/emacs
-        ln -sf "$DOTFILES_DIR/emacs" ~/.config/emacs
-        print_success "Emacs symlink created: ~/.config/emacs -> $DOTFILES_DIR/emacs"
+        cp -r "$DOTFILES_DIR/emacs" ~/.config/
+        print_success "Emacs configuration installed"
     fi
     
     # Install plugins
