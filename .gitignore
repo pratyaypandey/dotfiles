@@ -72,4 +72,13 @@ yarn-error.log*
 indent.log
 
 # Personal files
-test.txt 
+test.txt
+
+# Emacs generated files
+emacs/.local/
+emacs/eln-cache/
+doom/.local/
+*.elc
+*.eln
+auto-save-list
+tramp 

@@ -112,6 +112,21 @@ main() {
         print_success "Symlink created: ~/.config/nvim -> $DOTFILES_DIR/nvim"
     fi
     
+    # Install Emacs/Doom configuration
+    if [ -d "$DOTFILES_DIR/doom" ]; then
+        print_status "Installing Doom Emacs configuration..."
+        backup_config ~/.config/doom ~/.config/doom.backup.$(date +%Y%m%d_%H%M%S)
+        cp -r "$DOTFILES_DIR/doom" ~/.config/
+        print_success "Doom Emacs configuration installed"
+    fi
+    
+    if [ -d "$DOTFILES_DIR/emacs" ]; then
+        print_status "Installing Emacs configuration..."
+        backup_config ~/.config/emacs ~/.config/emacs.backup.$(date +%Y%m%d_%H%M%S)
+        cp -r "$DOTFILES_DIR/emacs" ~/.config/
+        print_success "Emacs configuration installed"
+    fi
+    
     # Install plugins
     print_status "Installing Neovim plugins..."
     if nvim --headless -c "Lazy! sync" -c "qa" 2>/dev/null; then

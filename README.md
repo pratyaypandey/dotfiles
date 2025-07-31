@@ -21,6 +21,12 @@ I couldn't be bothered with making a README. Here's what Cursor thinks:
 - **Auto-cleanup**: Automatic cleanup of auxiliary files
 - **Beamer Support**: Presentation templates and shortcuts
 
+### Emacs Configuration
+- **Doom Emacs**: Complete Doom Emacs configuration with custom modules
+- **Custom Config**: Personalized Emacs setup with custom functions and keybindings
+- **Package Management**: Straight.el for package management
+- **Themes and UI**: Custom themes and UI enhancements
+
 ### Key Bindings
 - `<leader>e` / `<leader>E`: Toggle file explorer
 - `<leader>f`: Format buffer
@@ -136,6 +142,14 @@ dotfiles/
 │   │   └── latex.lua        # LaTeX support
 │   └── UltiSnips/
 │       └── tex.snippets     # LaTeX snippets
+├── doom/                    # Doom Emacs configuration
+│   ├── config.el            # Custom configuration
+│   ├── init.el              # Module initialization
+│   └── packages.el          # Package declarations
+├── emacs/                   # Emacs configuration
+│   ├── early-init.el        # Early initialization
+│   ├── .doomrc              # Doom configuration
+│   └── lisp/                # Custom Lisp functions
 ├── install.sh               # Installation script
 └── README.md               # This file
 ```
