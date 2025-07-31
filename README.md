@@ -116,15 +116,21 @@ Customize LaTeX snippets in `nvim/UltiSnips/tex.snippets`. The file includes:
 - SymPy integration for math
 
 ### Workflow for Updates
-After installation, the install script creates a symlink from `~/.config/nvim` to `~/Code/dotfiles/nvim`. This means:
+After installation, the install script creates symlinks from `~/.config/` to `~/Code/dotfiles/` for all configurations:
 
-1. **Direct editing**: You can edit files directly in `~/Code/dotfiles/nvim/` and changes are immediately reflected
+- `~/.config/nvim` → `~/Code/dotfiles/nvim`
+- `~/.config/doom` → `~/Code/dotfiles/doom`
+- `~/.config/emacs` → `~/Code/dotfiles/emacs`
+
+This means:
+
+1. **Direct editing**: You can edit files directly in `~/Code/dotfiles/` and changes are immediately reflected
 2. **Version control**: All changes are tracked in your git repository
 3. **Commit and push**: After making changes, commit and push to GitHub:
    ```bash
    cd ~/Code/dotfiles
    git add .
-   git commit -m "Update nvim configuration"
+   git commit -m "Update configuration"
    git push
    ```
 
