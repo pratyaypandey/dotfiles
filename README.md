@@ -1,6 +1,6 @@
 # Pratyay's Dotfiles
 I couldn't be bothered with making a README. Here's what Cursor thinks: 
-A curated collection of my development environment configuration files, featuring a powerful Neovim setup optimized for LaTeX, Python, and general development.
+> A curated collection of my development environment configuration files, featuring a powerful Neovim setup optimized for LaTeX, Python, and general development.
 
 ## 🚀 Features
 
