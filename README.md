@@ -114,8 +114,7 @@ After installation, the install script creates a symlink from `~/.config/nvim` t
 
 1. **Direct editing**: You can edit files directly in `~/Code/dotfiles/nvim/` and changes are immediately reflected
 2. **Version control**: All changes are tracked in your git repository
-3. **Easy updates**: Use `./update.sh` to sync any changes made outside the dotfiles directory
-4. **Commit and push**: After making changes, commit and push to GitHub:
+3. **Commit and push**: After making changes, commit and push to GitHub:
    ```bash
    cd ~/Code/dotfiles
    git add .
@@ -157,6 +156,17 @@ rm -rf ~/.config/nvim
 
 # Reinstall from dotfiles
 ./install.sh
+```
+
+### Making Changes
+Since your nvim configuration is symlinked to the dotfiles directory, you can edit files directly:
+
+```bash
+# Edit any configuration file
+cd ~/Code/dotfiles
+nvim nvim/init.lua  # or any other config file
+
+# Changes are immediately active - no need to restart nvim
 ```
 
 ## 🤝 Contributing
