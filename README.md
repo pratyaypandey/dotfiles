@@ -1,0 +1,165 @@
+# Pratyay's Dotfiles
+
+A curated collection of my development environment configuration files, featuring a powerful Neovim setup optimized for LaTeX, Python, and general development.
+
+## 🚀 Features
+
+### Neovim Configuration
+- **Plugin Manager**: Lazy.nvim for fast and efficient plugin management
+- **Theme**: Kanagawa Dragon theme for a beautiful, eye-friendly experience
+- **LSP**: Full Language Server Protocol support with Mason
+- **Completion**: nvim-cmp with UltiSnips integration
+- **File Explorer**: NvimTree with git integration
+- **UI Enhancements**: Noice.nvim for better UI, Trouble for diagnostics
+- **Code Formatting**: Conform.nvim with auto-format on save
+- **Productivity**: Hardtime.nvim to improve vim habits
+
+### LaTeX Support
+- **VimTeX**: Comprehensive LaTeX support with live compilation
+- **UltiSnips**: Extensive snippet collection for LaTeX
+- **SymPy Integration**: Python math evaluation to LaTeX
+- **Auto-cleanup**: Automatic cleanup of auxiliary files
+- **Beamer Support**: Presentation templates and shortcuts
+
+### Key Bindings
+- `<leader>e` / `<leader>E`: Toggle file explorer
+- `<leader>f`: Format buffer
+- `<leader>xx`: Toggle diagnostics
+- `<leader>ht`: Toggle Hardtime
+- `<C-s>`: Save file (works in insert and normal mode)
+- `<C-l>`: Insert LaTeX line break (in .tex files)
+
+## 📦 Installation
+
+### Prerequisites
+- Neovim (0.9.0 or higher)
+- Git
+- A C compiler (for tree-sitter)
+- Python 3 (for UltiSnips)
+
+### Quick Install
+```bash
+# Clone the repository
+git clone https://github.com/pratyaypandey/dotfiles.git ~/.dotfiles
+
+# Run the install script
+cd ~/.dotfiles
+./install.sh
+```
+
+### Manual Installation
+```bash
+# Create necessary directories
+mkdir -p ~/.config/nvim
+
+# Copy nvim configuration
+cp -r ~/.dotfiles/nvim/* ~/.config/nvim/
+
+# Install plugins (first time you open nvim)
+nvim --headless -c "Lazy! sync" -c "qa"
+```
+
+## 🛠️ Dependencies
+
+### System Dependencies
+```bash
+# macOS (using Homebrew)
+brew install neovim git ripgrep fd
+
+# Ubuntu/Debian
+sudo apt install neovim git ripgrep fd-find
+
+# Arch Linux
+sudo pacman -S neovim git ripgrep fd
+```
+
+### Language Servers (auto-installed via Mason)
+- pyright (Python)
+- clangd (C/C++)
+- texlab (LaTeX)
+- dockerls (Docker)
+
+### Formatters (auto-installed via Conform)
+- black (Python)
+- isort (Python)
+- prettier (JavaScript/TypeScript/Web)
+- stylua (Lua)
+- latexindent (LaTeX)
+- shfmt (Shell)
+- clang_format (C/C++)
+- gofmt (Go)
+- rustfmt (Rust)
+
+## 🎨 Customization
+
+### Adding New Plugins
+Edit `nvim/lua/plugins.lua` and add your plugin to the appropriate module or as a standalone plugin.
+
+### Modifying Key Bindings
+Key bindings are defined in their respective module files:
+- General bindings: `nvim/init.lua`
+- UI bindings: `nvim/lua/ui.lua`
+- LSP bindings: `nvim/lua/lsp.lua`
+
+### LaTeX Snippets
+Customize LaTeX snippets in `nvim/UltiSnips/tex.snippets`. The file includes:
+- Smart bracket snippets
+- Color text shortcuts
+- Document templates
+- Beamer presentation templates
+- SymPy integration for math
+
+## 📁 Structure
+
+```
+dotfiles/
+├── nvim/
+│   ├── init.lua              # Main configuration
+│   ├── lua/
+│   │   ├── plugins.lua       # Plugin management
+│   │   ├── lsp.lua          # LSP configuration
+│   │   ├── completion.lua   # Completion setup
+│   │   ├── ui.lua           # UI plugins
+│   │   └── latex.lua        # LaTeX support
+│   └── UltiSnips/
+│       └── tex.snippets     # LaTeX snippets
+├── install.sh               # Installation script
+└── README.md               # This file
+```
+
+## 🔧 Troubleshooting
+
+### Common Issues
+
+1. **Plugins not loading**: Run `:Lazy sync` in Neovim
+2. **LSP not working**: Run `:Mason` and install required language servers
+3. **Formatters not working**: Install system dependencies (see above)
+4. **UltiSnips not working**: Ensure Python 3 is installed and accessible
+
+### Reset Configuration
+```bash
+# Remove current nvim config
+rm -rf ~/.config/nvim
+
+# Reinstall from dotfiles
+./install.sh
+```
+
+## 🤝 Contributing
+
+Feel free to submit issues and enhancement requests!
+
+## 📄 License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+## 🙏 Acknowledgments
+
+- [Lazy.nvim](https://github.com/folke/lazy.nvim) - Fast plugin manager
+- [Kanagawa](https://github.com/rebelot/kanagawa.nvim) - Beautiful theme
+- [VimTeX](https://github.com/lervag/vimtex) - LaTeX support
+- [UltiSnips](https://github.com/SirVer/ultisnips) - Snippet engine
+
+---
+
+**Happy coding! 🎉** 
