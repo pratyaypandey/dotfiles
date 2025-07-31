@@ -116,37 +116,33 @@ Customize LaTeX snippets in `nvim/UltiSnips/tex.snippets`. The file includes:
 - SymPy integration for math
 
 ### Workflow for Updates
-The install script copies configurations to `~/.config/` for portability. To keep your dotfiles in sync:
+The install script creates symlinks from `~/.config/` to `~/Code/dotfiles/` for one-way synchronization:
 
-#### Option 1: Edit in Dotfiles (Recommended)
+- `~/.config/nvim` → `~/Code/dotfiles/nvim`
+- `~/.config/doom` → `~/Code/dotfiles/doom`
+- `~/.config/emacs` → `~/Code/dotfiles/emacs`
+
+#### One-Way Workflow (Recommended)
 ```bash
-# Edit directly in dotfiles
-cd ~/Code/dotfiles
-nvim nvim/init.lua
-nvim doom/config.el
-nvim emacs/early-init.el
-
-# Then sync to .config
-./update.sh
-```
-
-#### Option 2: Edit in .config and Sync Back
-```bash
-# Edit in .config
+# Edit in .config (changes automatically sync to dotfiles)
 nvim ~/.config/nvim/init.lua
 nvim ~/.config/doom/config.el
+nvim ~/.config/emacs/early-init.el
 
-# Sync changes back to dotfiles
-cd ~/Code/dotfiles
-./update.sh
-```
-
-#### Option 3: Commit and Push
-```bash
+# Changes are immediately reflected in dotfiles!
+# Then commit and push
 cd ~/Code/dotfiles
 git add .
 git commit -m "Update configuration"
 git push
+```
+
+#### For Others (Cloning)
+```bash
+# Clone and install
+git clone https://github.com/pratyaypandey/dotfiles.git ~/Code/dotfiles
+cd ~/Code/dotfiles
+./install.sh  # Creates symlinks for one-way sync
 ```
 
 ## 📁 Structure
@@ -172,7 +168,6 @@ dotfiles/
 │   ├── .doomrc              # Doom configuration
 │   └── lisp/                # Custom Lisp functions
 ├── install.sh               # Installation script
-├── update.sh                # Sync changes back to dotfiles
 └── README.md               # This file
 ```
 
@@ -195,14 +190,15 @@ rm -rf ~/.config/nvim
 ```
 
 ### Making Changes
-Since your nvim configuration is symlinked to the dotfiles directory, you can edit files directly:
+Since your configurations are symlinked from `.config` to the dotfiles directory, you can edit files in their natural location:
 
 ```bash
-# Edit any configuration file
-cd ~/Code/dotfiles
-nvim nvim/init.lua  # or any other config file
+# Edit any configuration file in .config
+nvim ~/.config/nvim/init.lua
+nvim ~/.config/doom/config.el
+nvim ~/.config/emacs/early-init.el
 
-# Changes are immediately active - no need to restart nvim
+# Changes are immediately active and automatically synced to dotfiles
 ```
 
 ## 🤝 Contributing
