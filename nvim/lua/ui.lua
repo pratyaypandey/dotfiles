@@ -92,10 +92,6 @@ return {
     dependencies = { "MunifTanjim/nui.nvim" },
     opts = {
       disabled_keys = {
-        ["<Up>"] = { "n", "v", "i" },
-        ["<Down>"] = { "n", "v", "i" },
-        ["<Left>"] = { "n", "v", "i" },
-        ["<Right>"] = { "n", "v", "i" },
       },
       disabled_filetypes = { "qf", "netrw", "NvimTree", "lazy", "mason" },
       max_time = 1000,
