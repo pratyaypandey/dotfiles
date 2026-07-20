@@ -28,4 +28,13 @@ link_config "$dotfiles_dir/config/uv.toml" "$HOME/.config/uv/uv.toml"
 link_config "$dotfiles_dir/config/atuin.toml" "$HOME/.config/atuin/config.toml"
 link_config "$dotfiles_dir/config/starship.toml" "$HOME/.config/starship.toml"
 
+# Use Homebrew's stable opt path so Corepack shims survive Node 24 upgrades.
+corepack_dist="/opt/homebrew/opt/node@24/lib/node_modules/corepack/dist"
+if [ -d "$corepack_dist" ]; then
+  mkdir -p "$HOME/.local/bin"
+  for shim in pnpm pnpx yarn yarnpkg; do
+    ln -sfn "$corepack_dist/${shim}.js" "$HOME/.local/bin/$shim"
+  done
+fi
+
 printf '\nDotfiles installed. Open a new shell to load them.\n'
