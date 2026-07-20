@@ -1,0 +1,2 @@
+# Insert the selected command immediately when Enter is pressed.
+enter_accept = true

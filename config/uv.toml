@@ -1,0 +1,2 @@
+# Keep uv projects on uv-managed interpreters instead of Homebrew or macOS Python.
+python-preference = "only-managed"

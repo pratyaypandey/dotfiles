@@ -1,0 +1,41 @@
+add_newline = true
+
+format = """
+$hostname$directory$git_branch$git_status$fill$python$cmd_duration
+$character
+"""
+
+[hostname]
+ssh_only = true
+style = "bold red"
+format = "[$hostname]($style) "
+
+[directory]
+style = "bold blue"
+truncation_length = 3
+truncate_to_repo = true
+format = "[$path]($style) "
+
+[git_branch]
+style = "bold purple"
+format = "[$branch]($style) "
+
+[git_status]
+style = "bold red"
+format = '([$all_status$ahead_behind]($style)) '
+
+[python]
+style = "bold yellow"
+format = "[venv:$virtualenv]($style) "
+
+[cmd_duration]
+min_time = 1500
+style = "dimmed white"
+format = "[${duration}]($style) "
+
+[fill]
+symbol = " "
+
+[character]
+success_symbol = "[>](bold green)"
+error_symbol = "[>](bold red)"

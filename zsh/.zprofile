@@ -1,0 +1,4 @@
+# OrbStack CLI integration and completions.
+source ~/.orbstack/shell/init.zsh 2>/dev/null || :
+
+eval "$(/opt/homebrew/bin/brew shellenv)"
